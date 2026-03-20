@@ -70,7 +70,7 @@ export function MetarDayTempPanel({
     <Panel title="METAR Temperature Trend" feedStatus={feedStatus}>
       <div className="space-y-4">
         <div className="grid grid-cols-3 gap-3">
-          <div className="rounded-xl border border-info/15 bg-info/8 px-4 py-3 shadow-sm shadow-info/5 text-center">
+          <div className="rounded-xl border border-info/15 bg-info/8 px-4 py-3 shadow-sm shadow-info/5 flex flex-col items-center">
             <p className="text-[11px] uppercase tracking-[0.18em] text-info/80 text-center">
               Current
             </p>
@@ -78,7 +78,7 @@ export function MetarDayTempPanel({
               {latest?.tempC != null ? `${latest.tempC.toFixed(1)}°C` : '--'}
             </p>
           </div>
-          <div className="rounded-xl border border-surface-500/20 bg-surface-700/40 px-4 py-3 shadow-sm shadow-black/10 text-center">
+          <div className="rounded-xl border border-surface-500/20 bg-surface-700/40 px-4 py-3 shadow-sm shadow-black/10 flex flex-col items-center">
             <p className="text-[11px] uppercase tracking-[0.18em] text-surface-400 text-center">
               Min
             </p>
@@ -86,7 +86,7 @@ export function MetarDayTempPanel({
               {Number.isFinite(minTemp) ? `${minTemp.toFixed(1)}°C` : '--'}
             </p>
           </div>
-          <div className="rounded-xl border border-surface-500/20 bg-surface-700/40 px-4 py-3 shadow-sm shadow-black/10 text-center">
+          <div className="rounded-xl border border-surface-500/20 bg-surface-700/40 px-4 py-3 shadow-sm shadow-black/10 flex flex-col items-center">
             <p className="text-[11px] uppercase tracking-[0.18em] text-surface-400 text-center">
               Max
             </p>
