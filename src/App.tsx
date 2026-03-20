@@ -17,6 +17,7 @@ import { AviationAlerts } from './components/panels/AviationAlerts';
 import { HourlyPanel } from './components/panels/HourlyPanel';
 import { Hourly24Panel } from './components/panels/Hourly24Panel';
 import { MetarDayTempPanel } from './components/panels/MetarDayTempPanel';
+import { WindyMapPanel } from './components/panels/WindyMapPanel';
 
 function useLiveMinuteClock() {
   const [now, setNow] = useState(() => new Date());
@@ -137,6 +138,9 @@ function CityDashboard() {
           />
         </div>
       </div>
+
+      {/* Windy map */}
+      <WindyMapPanel lat={city.lat} lon={city.lon} />
     </div>
   );
 }
