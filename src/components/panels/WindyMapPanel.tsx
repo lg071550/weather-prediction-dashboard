@@ -9,12 +9,15 @@ export function WindyMapPanel({ lat, lon }: WindyMapPanelProps) {
   const src =
     `https://embed.windy.com/embed.html` +
     `?type=map&location=coordinates&metricRain=mm&metricTemp=°C&metricWind=km/h` +
-    `&zoom=9&overlay=wind&product=ecmwf&level=surface` +
+    `&zoom=9&overlay=temp&product=ecmwf&level=surface` +
     `&lat=${lat}&lon=${lon}`;
 
   return (
-    <Panel title="Windy Live Map" icon="🌬️">
-      <div className="w-full overflow-hidden rounded-lg" style={{ height: '480px' }}>
+    <Panel title="Windy Live Map">
+      <div
+        className="w-full overflow-hidden rounded-lg"
+        style={{ height: 'clamp(18rem, 22vw, 26rem)' }}
+      >
         <iframe
           src={src}
           title="Windy Weather Map"

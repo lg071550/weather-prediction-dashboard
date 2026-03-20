@@ -348,7 +348,7 @@ export function AviationAlerts({ alerts, feedStatus }: AviationAlertsProps) {
   }, [activeAlerts]);
 
   return (
-    <Panel title="Active Aviation Alerts" icon="✈️" feedStatus={feedStatus} feedName="TAF">
+    <Panel title="Active Aviation Alerts" feedStatus={feedStatus} feedName="TAF">
       {activeAlerts.length === 0 ? (
         <div className="flex items-center justify-center gap-2 rounded-lg border border-success/25 bg-success/10 px-3 py-2 text-sm text-success">
           <span className="text-xl">✅</span>

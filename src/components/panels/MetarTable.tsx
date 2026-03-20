@@ -16,7 +16,7 @@ function ageColor(minutes: number): string {
 
 export function MetarTable({ metars, feedStatus }: MetarTableProps) {
   return (
-    <Panel title="METAR Reports" icon="🛫" feedStatus={feedStatus} feedName="METAR">
+    <Panel title="METAR Reports" feedStatus={feedStatus} feedName="METAR">
       {metars.length === 0 ? (
         <p className="text-surface-500 text-sm italic">No METAR data available</p>
       ) : (

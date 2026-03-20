@@ -67,7 +67,7 @@ export function MetarDayTempPanel({
   );
 
   return (
-    <Panel title="METAR Temperature Trend" icon="🌡️" feedStatus={feedStatus}>
+    <Panel title="METAR Temperature Trend" feedStatus={feedStatus}>
       <div className="space-y-4">
         <div className="grid grid-cols-3 gap-3">
           <div className="rounded-xl border border-info/15 bg-info/8 px-4 py-3 shadow-sm shadow-info/5">

@@ -9,7 +9,7 @@ interface EnsemblePanelProps {
 
 export function EnsemblePanel({ ensemble, feedStatus }: EnsemblePanelProps) {
   return (
-    <Panel title="Ensemble Consensus" icon="📊" feedStatus={feedStatus} feedName="NWP">
+    <Panel title="Ensemble Consensus" feedStatus={feedStatus} feedName="NWP">
       {ensemble.length === 0 ? (
         <p className="text-surface-500 text-sm italic">Waiting for model data…</p>
       ) : (

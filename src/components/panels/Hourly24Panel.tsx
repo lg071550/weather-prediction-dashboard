@@ -37,7 +37,7 @@ export function Hourly24Panel({
     return () => window.clearInterval(timer);
   }, []);
 
-  const { hourlyData, currentTimeLabel } = useMemo(() => {
+  const hourlyData = useMemo(() => {
     const now = new Date(nowMs);
     const localDateKey = formatDateKeyInTimezone(now, timezone);
     const startOfDay = fromZonedTime(`${localDateKey}T00:00:00`, timezone);
@@ -56,19 +56,15 @@ export function Hourly24Panel({
       )
       .sort((a, b) => a.parsedTime.getTime() - b.parsedTime.getTime());
 
-    return {
-      hourlyData: points.map((obs) => ({
-        timeMs: obs.parsedTime.getTime(),
-        tempC: obs.tempC,
-      })),
-      currentTimeLabel: formatTimeInZone(now, timezone, 'HH:mm'),
-    };
+    return points.map((obs) => ({
+      timeMs: obs.parsedTime.getTime(),
+      tempC: obs.tempC,
+    }));
   }, [hourly, timezone, sourceTimezone, nowMs]);
 
   return (
     <Panel
       title="Hourly Max Forecast (00:00-24:00)"
-      icon="🕐"
       feedStatus={feedStatus}
       feedName="Hourly Forecast"
     >
@@ -77,21 +73,13 @@ export function Hourly24Panel({
           No hourly forecast data available
         </p>
       ) : (
-        <div className="space-y-4">
-          <div className="flex items-center justify-end gap-3">
-            <span className="glow-info inline-flex items-center gap-1.5 rounded-full border border-info/25 bg-info/10 px-3 py-1 text-[11px] font-semibold text-info">
-              <span className="h-2 w-2 rounded-full bg-info" />
-              <span>{currentTimeLabel}</span>
-            </span>
-          </div>
-
-          <div className="chart-shell h-56">
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart
-                data={hourlyData}
-                margin={{ top: 16, right: 12, left: 0, bottom: 0 }}
-                baseValue="dataMin"
-              >
+        <div className="chart-shell h-56">
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart
+              data={hourlyData}
+              margin={{ top: 16, right: 12, left: 0, bottom: 0 }}
+              baseValue="dataMin"
+            >
                 <defs>
                   <linearGradient id="tempGrad" x1="0" y1="0" x2="0" y2="1">
                     <stop
@@ -174,13 +162,6 @@ export function Hourly24Panel({
                   strokeWidth={2}
                   strokeOpacity={0.95}
                   ifOverflow="extendDomain"
-                  label={{
-                    value: currentTimeLabel,
-                    position: 'top',
-                    fill: 'var(--color-info)',
-                    fontSize: 11,
-                    fontWeight: 700,
-                  }}
                 />
                 <Area
                   type="monotone"
@@ -199,9 +180,8 @@ export function Hourly24Panel({
                     fill: 'var(--color-warning)',
                   }}
                 />
-              </AreaChart>
-            </ResponsiveContainer>
-          </div>
+            </AreaChart>
+          </ResponsiveContainer>
         </div>
       )}
     </Panel>

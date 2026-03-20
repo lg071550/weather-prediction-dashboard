@@ -87,7 +87,7 @@ function CityDashboard() {
       </div>
 
       {/* Panel grid */}
-      <div className="grid grid-cols-1 2xl:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 items-start">
         <NwpModelTable
           models={data.nwpModels}
           feedStatus={data.feeds.nwp}
@@ -98,8 +98,8 @@ function CityDashboard() {
         />
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
-        <div className="space-y-6 xl:col-span-3">
+      <div className="grid grid-cols-1 gap-6 items-start xl:[grid-template-columns:minmax(0,2.1fr)_minmax(0,2.1fr)_minmax(0,5.8fr)]">
+        <div className="space-y-6 min-w-0">
           <PrimaryStationCard
             summary={data.primaryStation}
             feedStatus={data.feeds.metar}
@@ -108,39 +108,41 @@ function CityDashboard() {
             metars={data.metars}
             feedStatus={data.feeds.metar}
           />
-        </div>
-
-        <div className="space-y-6 xl:col-span-3">
-          <MetarDayTempPanel
-            reports={data.primaryDayMetars}
-            stationId={city.primaryStation}
-            timezone={city.timezone}
-            feedStatus={data.feeds.metar}
-          />
           <AviationAlerts
             alerts={data.alerts}
             feedStatus={data.feeds.taf}
           />
         </div>
 
-        <div className="space-y-6 xl:col-span-6">
+        <div className="space-y-6 min-w-0">
+          <MetarDayTempPanel
+            reports={data.primaryDayMetars}
+            stationId={city.primaryStation}
+            timezone={city.timezone}
+            feedStatus={data.feeds.metar}
+          />
           <Hourly24Panel
             hourly={data.hourly}
             feedStatus={data.feeds.hourly}
             timezone={city.timezone}
             sourceTimezone={city.timezone}
           />
-          <HourlyPanel
-            hourly={data.hourly}
-            feedStatus={data.feeds.hourly}
-            timezone={city.timezone}
-            sourceTimezone={city.timezone}
-          />
+        </div>
+
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 min-w-0 items-start">
+          <div className="min-w-0">
+            <HourlyPanel
+              hourly={data.hourly}
+              feedStatus={data.feeds.hourly}
+              timezone={city.timezone}
+              sourceTimezone={city.timezone}
+            />
+          </div>
+          <div className="min-w-0">
+            <WindyMapPanel lat={city.lat} lon={city.lon} />
+          </div>
         </div>
       </div>
-
-      {/* Windy map */}
-      <WindyMapPanel lat={city.lat} lon={city.lon} />
     </div>
   );
 }

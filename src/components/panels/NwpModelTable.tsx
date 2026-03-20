@@ -15,7 +15,7 @@ export function NwpModelTable({ models, feedStatus }: NwpModelTableProps) {
   ).sort();
 
   return (
-    <Panel title="NWP Model Forecasts" icon="🌐" feedStatus={feedStatus} feedName="NWP">
+    <Panel title="NWP Model Forecasts" feedStatus={feedStatus} feedName="NWP">
       {models.length === 0 ? (
         <p className="text-surface-500 text-sm italic">No model data available</p>
       ) : (

@@ -35,7 +35,7 @@ export function PrimaryStationCard({ summary, feedStatus }: PrimaryStationCardPr
   const report = summary.latestReport;
 
   return (
-    <Panel title={`Primary Station · ${summary.stationId}`} icon="📡" feedStatus={feedStatus} feedName="METAR">
+    <Panel title={`Primary Station · ${summary.stationId}`} feedStatus={feedStatus} feedName="METAR">
       <div className="grid grid-cols-2 gap-4">
         {/* Latest temp */}
         <div className="space-y-1">
