@@ -20,16 +20,16 @@ export function MetarTable({ metars, feedStatus }: MetarTableProps) {
       {metars.length === 0 ? (
         <p className="text-surface-500 text-sm italic">No METAR data available</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+        <div className="min-w-0">
+          <table className="w-full table-fixed text-sm">
             <thead>
               <tr className="border-b border-surface-700/50">
-                <th className="text-left py-2 pr-3 text-surface-400 font-medium">Station</th>
-                <th className="text-center py-2 px-2 text-surface-400 font-medium">Temp</th>
-                <th className="text-center py-2 px-2 text-surface-400 font-medium">Dew</th>
-                <th className="text-center py-2 px-2 text-surface-400 font-medium">Wind</th>
-                <th className="text-center py-2 px-2 text-surface-400 font-medium">Vis</th>
-                <th className="text-right py-2 pl-3 text-surface-400 font-medium">Age</th>
+                <th className="w-[16%] text-left py-2 pr-2 text-surface-400 font-medium">Station</th>
+                <th className="w-[16%] text-center py-2 px-1.5 text-surface-400 font-medium">Temp</th>
+                <th className="w-[16%] text-center py-2 px-1.5 text-surface-400 font-medium">Dew</th>
+                <th className="w-[20%] text-center py-2 px-1.5 text-surface-400 font-medium">Wind</th>
+                <th className="w-[18%] text-center py-2 px-1.5 text-surface-400 font-medium">Vis</th>
+                <th className="w-[14%] text-right py-2 pl-2 text-surface-400 font-medium">Age</th>
               </tr>
             </thead>
             <tbody>
@@ -43,22 +43,22 @@ export function MetarTable({ metars, feedStatus }: MetarTableProps) {
                     key={m.stationId}
                     className="border-b border-surface-700/30 hover:bg-surface-700/20 transition-colors"
                   >
-                    <td className="py-2 pr-3 font-mono font-semibold text-surface-200">
+                    <td className="py-2 pr-2 font-mono font-semibold text-surface-200 truncate">
                       {m.stationId}
                     </td>
-                    <td className="text-center py-2 px-2 text-orange-400">
+                    <td className="text-center py-2 px-1.5 text-orange-400 whitespace-nowrap">
                       {m.tempC != null ? `${m.tempC}°C` : '—'}
                     </td>
-                    <td className="text-center py-2 px-2 text-sky-400">
+                    <td className="text-center py-2 px-1.5 text-sky-400 whitespace-nowrap">
                       {m.dewpointC != null ? `${m.dewpointC}°C` : '—'}
                     </td>
-                    <td className="text-center py-2 px-2 text-surface-300 whitespace-nowrap">
+                    <td className="text-center py-2 px-1.5 text-surface-300 whitespace-nowrap">
                       {m.windSpeedKt != null ? `${m.windSpeedKt}kt` : '—'}
                     </td>
-                    <td className="text-center py-2 px-2 text-surface-300">
+                    <td className="text-center py-2 px-1.5 text-surface-300 whitespace-nowrap truncate">
                       {m.visibility ?? '—'}
                     </td>
-                    <td className={`text-right py-2 pl-3 font-mono text-xs ${ageColor(displayAgeMinutes)}`}>
+                    <td className={`text-right py-2 pl-2 font-mono text-xs whitespace-nowrap ${ageColor(displayAgeMinutes)}`}>
                       {displayAgeMinutes >= 0 ? `${displayAgeMinutes}m` : '—'}
                     </td>
                   </tr>

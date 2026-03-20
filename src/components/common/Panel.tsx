@@ -13,10 +13,10 @@ interface PanelProps {
 export function Panel({ title, feedStatus, feedName, children }: PanelProps) {
   return (
     <div className="panel min-w-0 rounded-xl bg-surface-800/92 backdrop-blur-sm border border-surface-600/35 overflow-hidden transition-all duration-300 hover:border-surface-500/55">
-      <div className="px-4 py-3 border-b border-surface-600/40 flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-surface-200">{title}</h3>
+      <div className="relative px-4 py-3 border-b border-surface-600/40 flex items-center justify-center">
+        <h3 className="text-sm font-semibold text-surface-200 text-center">{title}</h3>
         {feedStatus?.isLoading && (
-          <div className="w-3 h-3 rounded-full border-2 border-accent-400 border-t-transparent animate-spin" />
+          <div className="absolute right-4 w-3 h-3 rounded-full border-2 border-accent-400 border-t-transparent animate-spin" />
         )}
       </div>
       <div className="min-w-0 p-4">

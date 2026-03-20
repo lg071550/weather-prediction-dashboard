@@ -92,34 +92,6 @@ function formatNumber(value: number): string {
   return Number.isInteger(value) ? value.toString() : Number(value.toFixed(2)).toString();
 }
 
-function formatChangeType(changeType: string): string {
-  const tokens = changeType.trim().split(/\s+/).filter(Boolean);
-
-  if (tokens.length === 0) {
-    return 'Base forecast';
-  }
-
-  const formattedTokens = tokens.map((token) => {
-    const normalized = token.toUpperCase();
-
-    if (normalized === 'BASE') return 'Base forecast';
-    if (normalized === 'TEMPO') return 'Temporary';
-    if (normalized === 'BECMG') return 'Becoming';
-    if (normalized === 'FM') return 'From';
-
-    const probabilityMatch = /^PROB(\d{1,2})$/.exec(normalized);
-    if (probabilityMatch) {
-      return `${probabilityMatch[1]}% chance`;
-    }
-
-    return normalized;
-  });
-
-  return formattedTokens.length === 1
-    ? formattedTokens[0]
-    : formattedTokens.join(' / ');
-}
-
 function describeWeatherToken(token: string): string {
   let normalized = token.trim().toUpperCase();
 
@@ -422,22 +394,10 @@ function AlertCard({ alert }: { alert: AviationAlert }) {
               <span className="glow-neutral rounded-full border border-surface-500/35 bg-surface-900/35 px-2 py-0.5 text-[11px] font-mono font-semibold text-surface-200">
                 {alert.stationId}
               </span>
-              {alert.changeType && !/TEMPO/i.test(alert.changeType) && (
-                <span className="glow-accent rounded-full border border-surface-500/35 bg-surface-900/35 px-2 py-0.5 text-[11px] font-medium text-surface-300">
-                  {formatChangeType(alert.changeType)}
-                </span>
-              )}
             </div>
             <h4 className="mt-1.5 text-sm font-semibold text-surface-50">{narrative.title}</h4>
           </div>
           <p className="mt-1.5 text-sm leading-relaxed text-surface-200/90">{narrative.impact}</p>
-          <div className="mt-2 flex flex-wrap gap-2">
-
-            <span className="glow-neutral inline-flex items-center gap-1.5 rounded-full border border-surface-500/35 bg-surface-900/30 px-2.5 py-1 text-[11px] text-surface-300">
-              <span>⏱</span>
-              <span>{alert.timeWindow}</span>
-            </span>
-          </div>
         </div>
       </div>
     </div>

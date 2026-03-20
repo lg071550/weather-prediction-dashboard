@@ -98,7 +98,7 @@ function CityDashboard() {
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-6 items-start xl:[grid-template-columns:minmax(0,2.1fr)_minmax(0,2.1fr)_minmax(0,5.8fr)]">
+      <div className="grid grid-cols-1 gap-6 items-start xl:[grid-template-columns:minmax(380px,2.8fr)_minmax(320px,2fr)_minmax(0,5.2fr)]">
         <div className="space-y-6 min-w-0">
           <PrimaryStationCard
             summary={data.primaryStation}
