@@ -32,5 +32,5 @@ build & run via npm run build and npm run dev (MUST use dev)
 
 
 
-https://github.com/user-attachments/assets/6f422287-d0b9-445e-9543-c9807f8ab299
+https://github.com/user-attachments/assets/b74f5a43-b3b0-4e01-9149-76a9b703674e
 
