@@ -31,6 +31,6 @@ Supports local hosting over wifi available to all local devices.
 build & run via npm run build and npm run dev (MUST use dev)
 
 
-https://github.com/user-attachments/assets/d07b719e-ab7d-4772-9460-376623078e56
+https://github.com/user-attachments/assets/0c0c5077-62df-4493-bf66-477d27858872
 
 
