@@ -105,7 +105,7 @@ export function HourlyPanel({
         <p className="text-surface-500 text-sm italic">No forecast data available</p>
       ) : (
         <div className="space-y-5">
-          <div className="chart-shell h-64">
+          <div className="chart-shell h-64 w-full min-w-0">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart
                 data={chartData}
@@ -230,36 +230,26 @@ export function HourlyPanel({
             </ResponsiveContainer>
           </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-[13px]">
+            <div className="min-w-0 overflow-hidden">
+              <table className="mx-auto w-full max-w-[720px] table-fixed text-[13px]">
                 <thead>
                   <tr className="border-b border-surface-700/50">
-                    <th className="text-left py-2 pr-2 text-surface-400 font-medium">Day</th>
-                    <th className="text-center py-2 px-1.5 text-surface-400 font-medium">Low</th>
-                    <th className="text-center py-2 px-1.5 text-surface-400 font-medium">High</th>
-                    <th className="text-center py-2 px-1.5 text-surface-400 font-medium">Rain</th>
-                    <th className="text-center py-2 px-1.5 text-surface-400 font-medium">Cloud</th>
-                    <th className="text-center py-2 px-1.5 text-surface-400 font-medium">Wind</th>
+                    <th className="w-[28%] text-center py-2 px-1.5 text-surface-400 font-medium">Day</th>
+                    <th className="w-[24%] text-center py-2 px-1.5 text-surface-400 font-medium">Low</th>
+                    <th className="w-[24%] text-center py-2 px-1.5 text-surface-400 font-medium">High</th>
+                    <th className="w-[24%] text-center py-2 px-1.5 text-surface-400 font-medium">Rain</th>
                   </tr>
                 </thead>
                 <tbody>
                   {daily.map((d) => (
                     <tr key={d.sampleTime} className="border-b border-surface-700/30 hover:bg-surface-700/20 transition-colors">
-                      <td className="py-2 pr-2 font-mono font-semibold text-surface-200 whitespace-nowrap">{d.label}</td>
-                      <td className="text-center py-2 px-1.5 text-info whitespace-nowrap">{d.tmin != null ? `${d.tmin.toFixed(1)}°` : '—'}</td>
-                      <td className="text-center py-2 px-1.5 text-warning whitespace-nowrap">{d.tmax != null ? `${d.tmax.toFixed(1)}°` : '—'}</td>
-                      <td className="text-center py-2 px-1.5 text-info whitespace-nowrap">{d.totalPrecip != null ? `${d.totalPrecip.toFixed(1)}mm` : '—'}</td>
-                      <td className="text-center py-2 px-1.5 text-surface-300 whitespace-nowrap">{d.cloudMax != null ? `${d.cloudMax}%` : '—'}</td>
-                      <td className="text-center py-2 px-1.5 text-surface-300 whitespace-nowrap">
-                        {d.windMin != null && d.windMax != null
-                          ? `${Math.round(d.windMin)}/${Math.round(d.windMax)} km/h`
-                          : d.windMin != null
-                          ? `${Math.round(d.windMin)} km/h`
-                          : '—'}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
+                      <td className="py-2 px-1.5 text-center font-mono font-semibold text-surface-200 truncate">{d.label}</td>
+                      <td className="text-center py-2 px-1.5 text-info whitespace-nowrap overflow-hidden text-ellipsis">{d.tmin != null ? `${d.tmin.toFixed(1)}°` : '—'}</td>
+                      <td className="text-center py-2 px-1.5 text-warning whitespace-nowrap overflow-hidden text-ellipsis">{d.tmax != null ? `${d.tmax.toFixed(1)}°` : '—'}</td>
+                      <td className="text-center py-2 px-1.5 text-info whitespace-nowrap overflow-hidden text-ellipsis">{d.totalPrecip != null ? `${d.totalPrecip.toFixed(1)}mm` : '—'}</td>
+                    </tr>
+                  ))}
+                </tbody>
             </table>
           </div>
         </div>

@@ -205,6 +205,9 @@ header {
 
 .chart-shell {
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   overflow: hidden;
   padding: 0.75rem;
   border: 1px solid rgba(var(--color-surface-600-rgb, 42, 49, 66), 0.45);
